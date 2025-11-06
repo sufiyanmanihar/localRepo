@@ -1,6 +1,5 @@
 const express = require('express');
 const session = require('express-session');
-// TIP: on Windows, bcrypt can be problematic. Use bcryptjs instead:
 const bcrypt = require('bcryptjs'); // npm i bcryptjs
 const path = require('path');
 
@@ -15,7 +14,7 @@ const gameScores = [];
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Always use an absolute path for static files
+// Always use absolute path for static files
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(session({
@@ -23,7 +22,7 @@ app.use(session({
   resave: false,
   saveUninitialized: false,
   cookie: {
-    secure: false,        // true only behind HTTPS
+    secure: false,      // true only behind HTTPS
     httpOnly: true,
     sameSite: 'lax'
   }
@@ -32,16 +31,17 @@ app.use(session({
 // Auth guard
 const isAuthenticated = (req, res, next) => {
   if (req.session.userId) return next();
-  // Send the login page directly so "/" always works even if redirects misbehave
-  return res.sendFile(path.join(__dirname, 'public', 'login.html'));
+  return res.redirect('/login.html');
 };
 
 // Routes
+
+// Redirect root to login or game
 app.get('/', (req, res) => {
   if (req.session.userId) {
-    return res.sendFile(path.join(__dirname, 'public', 'game.html'));
+    return res.redirect('/game.html');
   }
-  return res.sendFile(path.join(__dirname, 'public', 'login.html'));
+  return res.redirect('/login.html');
 });
 
 app.post('/register', async (req, res) => {
@@ -97,7 +97,7 @@ app.get('/api/leaderboard', (req, res) => {
   res.json(topScores);
 });
 
-// Protected game route (optional; static also serves /game.html)
+// Protected game route (optional)
 app.get('/game', isAuthenticated, (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'game.html'));
 });

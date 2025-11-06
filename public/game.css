@@ -1,0 +1,234 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: #faf8ef;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.game-container {
+    max-width: 500px;
+    width: 100%;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.title-section h1 {
+    font-size: 3em;
+    color: #776e65;
+    font-weight: bold;
+    margin: 0;
+}
+
+.subtitle {
+    color: #776e65;
+    font-size: 0.9em;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.user-info span {
+    color: #776e65;
+    font-weight: bold;
+}
+
+.btn-logout {
+    padding: 8px 16px;
+    background: #8f7a66;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.btn-logout:hover {
+    background: #9f8a76;
+}
+
+.score-container {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.score-box {
+    background: #bbada0;
+    padding: 10px 20px;
+    border-radius: 3px;
+    text-align: center;
+    flex: 1;
+}
+
+.score-label {
+    color: #eee4da;
+    font-size: 0.8em;
+    font-weight: bold;
+}
+
+.score-value {
+    color: white;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.game-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.btn-new-game {
+    padding: 10px 20px;
+    background: #8f7a66;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.btn-new-game:hover {
+    background: #9f8a76;
+}
+
+.game-status {
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+.game-status.won {
+    color: #f59e0b;
+}
+
+.game-status.lost {
+    color: #ef4444;
+}
+
+.game-board {
+    background: #bbada0;
+    border-radius: 6px;
+    padding: 10px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.tile {
+    background: #cdc1b4;
+    border-radius: 3px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2em;
+    font-weight: bold;
+    color: #776e65;
+    aspect-ratio: 1;
+    transition: all 0.15s ease-in-out;
+}
+
+.tile-2 { background: #eee4da; color: #776e65; }
+.tile-4 { background: #ede0c8; color: #776e65; }
+.tile-8 { background: #f2b179; color: #f9f6f2; }
+.tile-16 { background: #f59563; color: #f9f6f2; }
+.tile-32 { background: #f67c5f; color: #f9f6f2; }
+.tile-64 { background: #f65e3b; color: #f9f6f2; }
+.tile-128 { background: #edcf72; color: #f9f6f2; font-size: 1.8em; }
+.tile-256 { background: #edcc61; color: #f9f6f2; font-size: 1.8em; }
+.tile-512 { background: #edc850; color: #f9f6f2; font-size: 1.8em; }
+.tile-1024 { background: #edc53f; color: #f9f6f2; font-size: 1.5em; }
+.tile-2048 { background: #edc22e; color: #f9f6f2; font-size: 1.5em; }
+
+.instructions {
+    background: #8f7a66;
+    color: white;
+    padding: 15px;
+    border-radius: 3px;
+    margin-bottom: 20px;
+}
+
+.instructions p {
+    line-height: 1.6;
+}
+
+.leaderboard {
+    background: white;
+    padding: 20px;
+    border-radius: 3px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.leaderboard h2 {
+    color: #776e65;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.leaderboard-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.leaderboard-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    background: #faf8ef;
+    border-radius: 3px;
+}
+
+.leaderboard-rank {
+    font-weight: bold;
+    color: #776e65;
+}
+
+.leaderboard-username {
+    flex: 1;
+    margin-left: 10px;
+    color: #776e65;
+}
+
+.leaderboard-score {
+    font-weight: bold;
+    color: #8f7a66;
+}
+
+@media (max-width: 520px) {
+    .title-section h1 {
+        font-size: 2em;
+    }
+    
+    .tile {
+        font-size: 1.5em;
+    }
+    
+    .tile-128, .tile-256, .tile-512 {
+        font-size: 1.3em;
+    }
+    
+    .tile-1024, .tile-2048 {
+        font-size: 1em;
+    }
+}

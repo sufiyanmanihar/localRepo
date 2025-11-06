@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register - 2048 Game</title>
+  <link rel="stylesheet" href="auth.css">
+</head>
+<body>
+  <div class="container">
+    <div class="auth-box">
+      <h1>2048 Game</h1>
+      <h2>Register</h2>
+      
+      <form id="registerForm">
+        <div class="form-group">
+          <input type="text" id="username" placeholder="Username" required>
+        </div>
+        <div class="form-group">
+          <input type="password" id="password" placeholder="Password" required>
+        </div>
+        <div class="form-group">
+          <input type="password" id="confirmPassword" placeholder="Confirm Password" required>
+        </div>
+        <button type="submit" class="btn">Register</button>
+      </form>
+      
+      <div id="message" class="message"></div>
+      
+      <p class="switch-form">
+        Already have an account? <a href="login.html">Login here</a>
+      </p>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      document.getElementById('registerForm').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        
+        const username = document.getElementById('username').value;
+        const password = document.getElementById('password').value;
+        const confirmPassword = document.getElementById('confirmPassword').value;
+        const messageEl = document.getElementById('message');
+        
+        if (password !== confirmPassword) {
+          messageEl.textContent = 'Passwords do not match';
+          messageEl.className = 'message error';
+          return;
+        }
+        
+        try {
+          const res = await fetch('/register', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ username, password })
+          });
+          
+          const data = await res.json();
+          
+          if (res.ok) {
+            messageEl.textContent = 'Registration successful! Redirecting to login...';
+            messageEl.className = 'message success';
+            setTimeout(() => window.location.href = 'login.html', 1500);
+          } else {
+            messageEl.textContent = data.error;
+            messageEl.className = 'message error';
+          }
+        } catch (err) {
+          messageEl.textContent = 'An error occurred';
+          messageEl.className = 'message error';
+        }
+      });
+    });
+  </script>
+</body>
+</html>

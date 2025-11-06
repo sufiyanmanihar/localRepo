@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2048 Game</title>
+  <link rel="stylesheet" href="game.css">
+</head>
+<body>
+  <div class="game-container">
+    <div class="header">
+      <div class="title-section">
+        <h1>2048</h1>
+        <p class="subtitle">Join the tiles to reach 2048!</p>
+      </div>
+      <div class="user-info">
+        <span id="username"></span>
+        <button id="logoutBtn" class="btn-logout">Logout</button>
+      </div>
+    </div>
+
+    <div class="score-container">
+      <div class="score-box">
+        <div class="score-label">SCORE</div>
+        <div id="score" class="score-value">0</div>
+      </div>
+      <div class="score-box">
+        <div class="score-label">BEST</div>
+        <div id="best" class="score-value">0</div>
+      </div>
+    </div>
+
+    <div class="game-controls">
+      <button id="newGameBtn" class="btn-new-game">New Game</button>
+      <div id="gameStatus" class="game-status"></div>
+    </div>
+
+    <div id="gameBoard" class="game-board"></div>
+
+    <div class="instructions">
+      <p><strong>How to play:</strong> Use arrow keys to move tiles. Tiles with the same number merge into one when they touch. Add them up to reach 2048!</p>
+    </div>
+
+    <div class="leaderboard">
+      <h2>Leaderboard</h2>
+      <div id="leaderboard" class="leaderboard-list"></div>
+    </div>
+  </div>
+
+  <script src="game.js"></script>
+</body>
+</html>
