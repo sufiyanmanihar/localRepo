@@ -7,43 +7,45 @@
   <link rel="stylesheet" href="game.css">
 </head>
 <body>
-  <div class="game-container">
+  <div class="container">
     <div class="header">
       <div class="title-section">
         <h1>2048</h1>
-        <p class="subtitle">Join the tiles to reach 2048!</p>
+        <div class="user-info">
+          <span id="username"></span>
+          <button id="logoutBtn" class="logout-btn">Logout</button>
+        </div>
       </div>
-      <div class="user-info">
-        <span id="username"></span>
-        <button id="logoutBtn" class="btn-logout">Logout</button>
-      </div>
-    </div>
-
-    <div class="score-container">
-      <div class="score-box">
-        <div class="score-label">SCORE</div>
-        <div id="score" class="score-value">0</div>
-      </div>
-      <div class="score-box">
-        <div class="score-label">BEST</div>
-        <div id="best" class="score-value">0</div>
+      <div class="scores">
+        <div class="score-box">
+          <div class="score-label">SCORE</div>
+          <div id="score" class="score-value">0</div>
+        </div>
+        <div class="score-box">
+          <div class="score-label">BEST</div>
+          <div id="best" class="score-value">0</div>
+        </div>
       </div>
     </div>
 
-    <div class="game-controls">
-      <button id="newGameBtn" class="btn-new-game">New Game</button>
-      <div id="gameStatus" class="game-status"></div>
+    <div class="game-intro">
+      <p><strong>HOW TO PLAY:</strong> Use arrow keys to move tiles. When two tiles with the same number touch, they merge into one!</p>
+      <button id="newGameBtn" class="new-game-btn">New Game</button>
     </div>
 
     <div id="gameBoard" class="game-board"></div>
 
-    <div class="instructions">
-      <p><strong>How to play:</strong> Use arrow keys to move tiles. Tiles with the same number merge into one when they touch. Add them up to reach 2048!</p>
+    <div id="gameOver" class="game-over hidden">
+      <div class="game-over-content">
+        <h2>Game Over!</h2>
+        <p>Your Score: <span id="finalScore"></span></p>
+        <button id="tryAgainBtn" class="try-again-btn">Try Again</button>
+      </div>
     </div>
 
     <div class="leaderboard">
-      <h2>Leaderboard</h2>
-      <div id="leaderboard" class="leaderboard-list"></div>
+      <h3>Top Scores</h3>
+      <div id="leaderboard"></div>
     </div>
   </div>
 
